@@ -105,8 +105,7 @@ export function CourseFilters({
   onFilterChange,
   defaultSelected = "Featured",
 }: CourseFiltersProps) {
-  const [activeFilter, setActiveFilter] =
-    useState<string>(defaultSelected);
+  const [activeFilter, setActiveFilter] = useState<string>(defaultSelected);
 
   const handleSelect = (category: string) => {
     setActiveFilter(category);
@@ -139,13 +138,14 @@ export function CourseFilters({
   const mdRow4 = FILTER_CATEGORIES.slice(14, 18);
 
   return (
-    <div className="w-full pt-10 pb-18">
+    <div className="w-full pt-0 lg:pt-10 pb-0 lg:pb-18">
       {/* =========================
           Mobile
       ========================== */}
       <div className="flex flex-wrap items-center justify-center gap-1 md:hidden">
         {FILTER_CATEGORIES.map((category, index) => (
           <AnimatedFilterButton
+          className="text-xs"
             key={category}
             category={category}
             index={index}
@@ -158,15 +158,15 @@ export function CourseFilters({
         <MoreButton
           index={FILTER_CATEGORIES.length}
           size="sm"
-          className="font-semibold"
+          className="font-semibold text-xs md:text-sm"
         />
       </div>
 
       {/* =========================
           MD: 5 / 5 / 4 / 4
       ========================== */}
-      <div className="hidden md:flex lg:hidden flex-col items-center gap-3">
-        <div className="flex items-center justify-center gap-2 xl:gap-3">
+      <div className="hidden md:flex lg:hidden flex-col items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           {mdRow1.map((category, index) => (
             <AnimatedFilterButton
               key={category}
@@ -174,12 +174,12 @@ export function CourseFilters({
               index={index}
               activeFilter={activeFilter}
               onSelect={handleSelect}
-              className="rounded-full px-3 font-medium text-base"
+              className="rounded-full px-3 font-medium text-sm"
             />
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-2">
           {mdRow2.map((category, index) => (
             <AnimatedFilterButton
               key={category}
@@ -187,12 +187,12 @@ export function CourseFilters({
               index={index + mdRow1.length}
               activeFilter={activeFilter}
               onSelect={handleSelect}
-              className="rounded-full px-3 font-medium text-base"
+              className="rounded-full px-3 font-medium text-sm"
             />
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-2">
           {mdRow3.map((category, index) => (
             <AnimatedFilterButton
               key={category}
@@ -200,25 +200,20 @@ export function CourseFilters({
               index={index + mdRow1.length + mdRow2.length}
               activeFilter={activeFilter}
               onSelect={handleSelect}
-              className="rounded-full px-3 font-medium text-base"
+              className="rounded-full px-3 font-medium text-sm"
             />
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-2">
           {mdRow4.map((category, index) => (
             <AnimatedFilterButton
               key={category}
               category={category}
-              index={
-                index +
-                mdRow1.length +
-                mdRow2.length +
-                mdRow3.length
-              }
+              index={index + mdRow1.length + mdRow2.length + mdRow3.length}
               activeFilter={activeFilter}
               onSelect={handleSelect}
-              className="rounded-full px-3 font-medium text-base"
+              className="rounded-full px-3 font-medium text-sm"
             />
           ))}
 

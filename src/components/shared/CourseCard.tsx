@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Star, BarChart3 } from "lucide-react";
+import { Star } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -64,13 +64,13 @@ export function CourseCard({ course }: CourseCardProps) {
 
           {/* Overlaid Badges */}
           <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-1.5 z-20 pointer-events-none">
-            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
+            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-[0.6rem] lg:text-[0.5rem] xl:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
               {course.lessonsCount} Lessons
             </span>
-            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
+            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-[0.6rem] lg:text-[0.5rem] xl:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
               {course.duration}
             </span>
-            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
+            <span className="backdrop-blur-md bg-white/40 text-slate-900 text-[0.6rem] lg:text-[0.5rem] xl:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 shadow-sm">
               {course.commentsCount} Comments
             </span>
           </div>

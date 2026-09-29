@@ -1,23 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import { Title } from "@/components/shared/Title";
 import { MOCK_COURSES } from "@/mocks/coursCard.mocks";
 import { CourseCard } from "@/components/shared/CourseCard";
-
 import { CourseFilters } from "./course-filters";
 
-const sectionContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
+const ease: [number, number, number, number] = [
+  0.22,
+  1,
+  0.36,
+  1,
+];
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -27,12 +24,12 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      ease,
     },
   },
 };
 
-const cardContainer = {
+const cardContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -41,7 +38,7 @@ const cardContainer = {
   },
 };
 
-const cardItem = {
+const cardItem: Variants = {
   hidden: {
     opacity: 0,
     y: 50,
@@ -53,7 +50,7 @@ const cardItem = {
     scale: 1,
     transition: {
       duration: 0.55,
-      ease: [0.22, 1, 0.36, 1],
+      ease,
     },
   },
 };
@@ -100,13 +97,10 @@ export function CoursesSection() {
             once: true,
             amount: 0.12,
           }}
-          className="grid grid-cols-1 items-stretch gap-10 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
         >
           {MOCK_COURSES.map((course) => (
-            <motion.div
-              key={course.id}
-              variants={cardItem}
-            >
+            <motion.div key={course.id} variants={cardItem}>
               <CourseCard course={course} />
             </motion.div>
           ))}

@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { MenuIcon, ShoppingBagIcon } from "@/components/icons/Icons";
 import Logo from "./Logo";
+import { X } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -17,36 +18,7 @@ const NAV_LINKS = [
 
 const SCROLL_THRESHOLD = 10;
 
-function CloseIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
 
-// function Logo() {
-//   // Replace the placeholder with your real logo (e.g. next/image or an SVG).
-//   return (
-//     <Link
-//       href="/"
-//       aria-label="Home"
-//       className="flex h-10 w-32 items-center justify-center rounded-md border border-dashed border-current/40 text-sm font-medium opacity-80"
-//     >
-//       Logo
-//     </Link>
-//   );
-// }
 
 export function Navbar() {
   const pathname = usePathname();
@@ -61,10 +33,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close drawer on route change
-  useEffect(() => {
+  const handleNavigation = () => {
     setOpen(false);
-  }, [pathname]);
+  };
 
   // Lock body scroll + close on Escape while the drawer is open
   useEffect(() => {
@@ -166,7 +137,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/50 md:hidden"
+              className="fixed inset-0 z-60 bg-black/50 md:hidden"
               aria-hidden="true"
             />
             <motion.aside
@@ -179,7 +150,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 320 }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl md:hidden"
+              className="fixed inset-y-0 right-0 z-70 flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl md:hidden"
             >
               <div className="flex h-16 items-center justify-between px-4">
                 <Logo />
@@ -189,7 +160,7 @@ export function Navbar() {
                   aria-label="Close menu"
                   className="grid size-10 place-items-center rounded-full transition-colors hover:bg-muted"
                 >
-                  <CloseIcon />
+                  <X />
                 </button>
               </div>
 
@@ -198,6 +169,7 @@ export function Navbar() {
                   <li key={href}>
                     <Link
                       href={href}
+                      onClick={handleNavigation}
                       aria-current={isActive(href) ? "page" : undefined}
                       className={cn(
                         "block rounded-xl px-4 py-3 text-lg font-medium transition-colors hover:bg-muted",
@@ -213,12 +185,15 @@ export function Navbar() {
               <div className="mt-auto flex flex-col gap-3 border-t p-4">
                 <Link
                   href="/sign-in"
+                  onClick={handleNavigation}
                   className="rounded-full border px-5 py-3 text-center text-base font-medium transition-colors hover:bg-muted"
                 >
                   Sign in
                 </Link>
+
                 <Link
                   href="/join"
+                  onClick={handleNavigation}
                   className="rounded-full bg-primary px-5 py-3 text-center text-base font-semibold text-primary-foreground"
                 >
                   Join us
