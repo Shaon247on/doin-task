@@ -14,6 +14,8 @@ const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
   { label: "Creators", href: "/creators" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 const SCROLL_THRESHOLD = 10;
