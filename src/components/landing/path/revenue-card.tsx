@@ -2,7 +2,6 @@ type RevenueCardProps = {
   label?: string;
   period?: string;
   amount?: string;
-  /** 0–100 */
   progress?: number;
   className?: string;
 };

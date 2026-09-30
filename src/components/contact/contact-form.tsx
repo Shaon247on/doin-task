@@ -14,9 +14,15 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner";
-import { contactSchema, type ContactFormValues } from "@/schemas/contact.schema";
+import {
+  contactSchema,
+  type ContactFormValues,
+} from "@/schemas/contact.schema";
 
-type CreatorOption = { slug: string; name: string };
+type CreatorOption = {
+  slug: string;
+  name: string;
+};
 
 export function ContactForm({
   creators,
@@ -39,6 +45,7 @@ export function ContactForm({
 
   const onSubmit = (values: ContactFormValues) => {
     const inbox = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+
     if (!inbox) {
       toast.info("Your question is ready", {
         description:
@@ -48,20 +55,27 @@ export function ContactForm({
     }
 
     const creator = creators.find((item) => item.slug === values.creatorSlug);
+
     const subject = encodeURIComponent(values.subject);
+
     const body = encodeURIComponent(
       `Question for: ${creator?.name ?? "ByteSpace creator"}\nFrom: ${values.name} <${values.email}>\n\n${values.message}`,
     );
 
-    window.location.href = `mailto:${inbox}?subject=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:${inbox}?subject=${subject}&body=${body}`;
+
+    window.location.assign(mailtoUrl);
+
     toast.success("Your email app is opening", {
-      description: "Review your question there and send it to the ByteSpace team.",
+      description:
+        "Review your question there and send it to the ByteSpace team.",
     });
   };
 
   return (
     <>
       <Toaster position="top-center" richColors />
+
       <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
         <FieldGroup className="gap-5">
           <div className="grid gap-5 sm:grid-cols-2">
@@ -71,6 +85,7 @@ export function ContactForm({
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="contact-name">Your name</FieldLabel>
+
                   <Input
                     {...field}
                     id="contact-name"
@@ -79,7 +94,10 @@ export function ContactForm({
                     aria-invalid={fieldState.invalid}
                     className="h-12 rounded-xl border-border bg-white px-4 md:text-base"
                   />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -90,6 +108,7 @@ export function ContactForm({
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="contact-email">Email address</FieldLabel>
+
                   <Input
                     {...field}
                     id="contact-email"
@@ -99,7 +118,10 @@ export function ContactForm({
                     aria-invalid={fieldState.invalid}
                     className="h-12 rounded-xl border-border bg-white px-4 md:text-base"
                   />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -111,6 +133,7 @@ export function ContactForm({
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor="contact-creator">Ask a creator</FieldLabel>
+
                 <select
                   {...field}
                   id="contact-creator"
@@ -118,13 +141,17 @@ export function ContactForm({
                   className="h-12 w-full rounded-xl border border-border bg-white px-4 text-sm text-foreground outline-none focus-visible:ring-3 focus-visible:ring-ring/30"
                 >
                   <option value="">Choose a creator</option>
+
                   {creators.map((creator) => (
                     <option key={creator.slug} value={creator.slug}>
                       {creator.name}
                     </option>
                   ))}
                 </select>
-                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
           />
@@ -135,6 +162,7 @@ export function ContactForm({
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor="contact-subject">Subject</FieldLabel>
+
                 <Input
                   {...field}
                   id="contact-subject"
@@ -142,7 +170,10 @@ export function ContactForm({
                   aria-invalid={fieldState.invalid}
                   className="h-12 rounded-xl border-border bg-white px-4 md:text-base"
                 />
-                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
           />
@@ -153,6 +184,7 @@ export function ContactForm({
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor="contact-message">Your question</FieldLabel>
+
                 <textarea
                   {...field}
                   id="contact-message"
@@ -162,10 +194,14 @@ export function ContactForm({
                   aria-invalid={fieldState.invalid}
                   className="w-full resize-y rounded-xl border border-border bg-white px-4 py-3 text-base outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30"
                 />
+
                 <FieldDescription>
                   {field.value.length}/3000 characters
                 </FieldDescription>
-                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
           />
@@ -173,9 +209,10 @@ export function ContactForm({
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-md text-xs leading-5 text-muted-foreground">
-            Your message is prepared for the ByteSpace contact inbox. It will open in your email
-            app when an inbox is configured.
+            Your message is prepared for the ByteSpace contact inbox. It will
+            open in your email app when an inbox is configured.
           </p>
+
           <Button type="submit" disabled={form.formState.isSubmitting}>
             Send question
           </Button>

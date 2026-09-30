@@ -1,4 +1,3 @@
-/** Grid of boxes behind the creator CTA. Column/row counts change per breakpoint. */
 export function CreatorGrid() {
   return (
     <div

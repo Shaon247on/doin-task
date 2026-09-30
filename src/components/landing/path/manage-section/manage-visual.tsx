@@ -7,7 +7,6 @@ import { ScaledStage } from "../floating-elements/scaled-stage";
 import { YearToDateCard } from "../floating-elements/year-to-date-card";
 import { FloatingElement } from "@/components/shared/floating-element";
 
-/** Design frame: 541 × 565 */
 export function ManageVisual() {
   return (
     <ScaledStage width={541} height={565}>

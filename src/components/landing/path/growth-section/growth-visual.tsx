@@ -1,18 +1,16 @@
 import Image from "next/image";
 
-// NOTE: adjust this import to wherever your CourseCard lives.
 import { ProgressStatCard } from "@/components/landing/hero/progress-stat-card";
 import { ScaledStage } from "../floating-elements/scaled-stage";
 import { CourseCard, CourseData } from "@/components/shared/CourseCard";
 import { FloatingElement } from "@/components/shared/floating-element";
 
-// Decorative demo data: the card is mostly hidden behind the boy.
-// Replace the thumbnail/avatar paths with real images.
 const FEATURED_COURSE: CourseData = {
   id: "path-demo",
   slug: "learn-figma-from-beginner",
   title: "Learn Figma from Beginner to Pro",
-  thumbnail: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop",
+  thumbnail:
+    "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop",
   author: { name: "purepearl studio" },
   lessonsCount: 17,
   duration: "2 hours 16 mins",
@@ -29,16 +27,18 @@ const FEATURED_COURSE: CourseData = {
   billingType: "lifetime",
 };
 
-/** Design frame: 577 × 552 */
 export function GrowthVisual() {
   return (
     <ScaledStage width={577} height={552}>
-      {/* Course card sits behind the boy (decorative, so not focusable/clickable) */}
-      <div aria-hidden="true" inert className="pointer-events-none absolute left-0 top-0 z-10 w-[372px]">
+      <div
+        aria-hidden="true"
+        inert
+        className="pointer-events-none absolute left-0 top-0 z-10 w-93"
+      >
         <CourseCard course={FEATURED_COURSE} />
       </div>
 
-      <div className="absolute left-[35px] -top-30 z-20 h-[632px] w-[612px]">
+      <div className="absolute left-8.75 -top-30 z-20 h-58 w-153">
         <Image
           src="/Images/boy.png"
           alt="Smiling student wearing headphones and holding a laptop"

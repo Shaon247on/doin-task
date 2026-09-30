@@ -6,7 +6,6 @@ type SectionHeadingProps = {
   titleClassName?: string;
 };
 
-/** Shared title + paragraph used by both rows of the section. */
 export function SectionHeading({ title, children, titleClassName = "max-w-xl" }: SectionHeadingProps) {
   return (
     <>

@@ -1,9 +1,5 @@
 import { FloatingElement } from "@/components/shared/floating-element";
 
-/**
- * 7 floating elements. Desktop (lg+) positions are % of the 1440×488 design.
- * Below lg only the four corner pieces stay (small and half off-canvas) so they never fight the text.
- */
 const ELEMENTS = [
   {
     src: "/elements/creator/top-left-spring.png",

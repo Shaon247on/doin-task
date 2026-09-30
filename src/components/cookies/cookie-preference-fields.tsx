@@ -61,7 +61,7 @@ export function CookiePreferenceFields({
               checked={preferences[key]}
               disabled={required || disabled}
               onChange={(event) => updatePreference(key, event.target.checked)}
-              className="mt-1 size-4 shrink-0 accent-[var(--heroBg)] disabled:cursor-not-allowed"
+              className="mt-1 size-4 shrink-0 accent-hero disabled:cursor-not-allowed"
             />
             <span className="min-w-0 flex-1">
               <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold text-foreground">
