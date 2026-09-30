@@ -19,7 +19,7 @@ const COLUMNS = [
     { label: "Sport", href: "/courses?category=sport" },
   ],
   [
-    { label: "Become a Creator", href: "/join" },
+    { label: "Become a Creator", href: "/sign-up" },
     { label: "Affiliate Program", href: "/affiliate" },
     { label: "Contact", href: "/contact" },
     { label: "Help", href: "/help" },

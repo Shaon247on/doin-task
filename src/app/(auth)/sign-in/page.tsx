@@ -1,11 +1,9 @@
-import React from 'react'
+import type { Metadata } from "next";
 
-function page() {
-  return (
-    <div>
-      Sign in
-    </div>
-  )
+import { SignInForm } from "@/components/auth/SignInForm";
+
+export const metadata: Metadata = { title: "Sign in" };
+
+export default function SignInPage() {
+  return <SignInForm />;
 }
-
-export default page

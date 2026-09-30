@@ -100,7 +100,7 @@ export function Navbar() {
               Sign in
             </Link>
             <Link
-              href="/join"
+              href="/sign-up"
               className="hidden rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95 md:inline-block"
             >
               Join us
@@ -192,7 +192,7 @@ export function Navbar() {
                 </Link>
 
                 <Link
-                  href="/join"
+                  href="/sign-up"
                   onClick={handleNavigation}
                   className="rounded-full bg-primary px-5 py-3 text-center text-base font-semibold text-primary-foreground"
                 >

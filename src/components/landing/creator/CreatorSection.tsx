@@ -27,7 +27,7 @@ export function CreatorSection() {
           publishing your finest course on the ByteSpace Course Library.
         </p>
 
-        <Link href="/join" className={`mt-8 lg:mt-10 ${buttonVariants()}`}>
+        <Link href="/sign-up" className={`mt-8 lg:mt-10 ${buttonVariants()}`}>
           Join as Creator
         </Link>
       </div>
