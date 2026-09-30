@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "../shared/Footer";
 
 /**
  * Wraps every page with the shared landing chrome.
@@ -10,10 +11,12 @@ import { Navbar } from "@/components/shared/Navbar";
  */
 export function LandingShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <section className="flex min-h-screen flex-col bg-background text-foreground">
+      <main className="flex-1">
       <Navbar />
-      <main className="flex-1">{children}</main>
-      {/* <Footer /> goes here later */}
-    </div>
+        {children}
+        <Footer/>
+        </main>
+    </section>
   );
 }

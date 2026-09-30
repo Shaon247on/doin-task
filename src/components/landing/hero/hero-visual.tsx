@@ -82,7 +82,7 @@ export function HeroVisual() {
         "
       >
         <Image
-          src="/images/boy.png"
+          src="/Images/boy.png"
           alt="Smiling student wearing headphones and holding a laptop"
           fill
           priority

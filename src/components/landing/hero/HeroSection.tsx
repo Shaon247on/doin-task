@@ -1,5 +1,5 @@
 import { HeroElements } from "./hero-elements";
-import { HeroGrid } from "./hero-grid";
+import { HeroGrid } from "../../shared/hero-grid";
 import { HeroHeading } from "./hero-heading";
 import { HeroSearch } from "./hero-search";
 import { HeroVisual } from "./hero-visual";

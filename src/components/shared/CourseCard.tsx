@@ -98,49 +98,48 @@ export function CourseCard({ course }: CourseCardProps) {
         </CardHeader>
 
         {/* Content: Level Badge + Enrolled Avatar Stack */}
-        <CardContent className="px-4 py-3 flex items-center justify-between">
+        <CardContent className="px-3">
           {/* Level Badge */}
-          <Badge
-            variant="secondary"
-            className="bg-[#F5F5F6] text-slate-700 hover:bg-slate-100 font-medium text-xs px-3 py-3.5 rounded-full flex items-center gap-1.5 border-none"
-          >
-            <ChartIcon width={30} height={30} className="size-5" />
-            {course.level}
-          </Badge>
+          <div className="flex items-center justify-between">
+            <Badge
+              variant="secondary"
+              className="bg-[#F5F5F6] text-slate-700 hover:bg-slate-100 font-medium text-xs px-3 py-3.5 rounded-full flex items-center gap-1.5 border-none"
+            >
+              <ChartIcon width={30} height={30} className="size-5" />
+              {course.level}
+            </Badge>
 
-          {/* Student Avatars Stack */}
-          <div className="flex items-center -space-x-2 overflow-hidden">
-            {visibleStudents.map((student) => (
-              <Avatar
-                key={student.id}
-                className="inline-block border-2 border-white w-8 h-8 rounded-full"
-              >
-                <AvatarImage src={student.avatarUrl} alt={student.name} />
-                <AvatarFallback className="text-[10px] bg-slate-200">
-                  {student.name.charAt(0)}
-                </AvatarFallback>
-              </Avatar>
-            ))}
-            {remainingCount > 0 && (
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#D4FB20] text-black border-2 border-white text-xs font-extrabold z-10 shrink-0">
-                {remainingCount}+
-              </div>
-            )}
+            {/* Student Avatars Stack */}
+            <div className="flex items-center -space-x-2 overflow-hidden">
+              {visibleStudents.map((student) => (
+                <Avatar
+                  key={student.id}
+                  className="inline-block border-2 border-white w-8 h-8 rounded-full"
+                >
+                  <AvatarImage src={student.avatarUrl} alt={student.name} />
+                  <AvatarFallback className="text-[10px] bg-slate-200">
+                    {student.name.charAt(0)}
+                  </AvatarFallback>
+                </Avatar>
+              ))}
+              {remainingCount > 0 && (
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#D4FB20] text-black border-2 border-white text-xs font-extrabold z-10 shrink-0">
+                  {remainingCount}+
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-baseline space-x-1 mt-2">
+            <span className="text-2xl font-extrabold text-blue-600">
+              ${course.price}
+            </span>
+            <span className="text-sm font-medium text-slate-400">
+              /{course.billingType}
+            </span>
           </div>
         </CardContent>
       </div>
-
-      {/* Footer: Price */}
-      <CardFooter className="px-4 pt-2 pb-2 border-t border-slate-100/80">
-        <div className="flex items-baseline space-x-1">
-          <span className="text-2xl font-extrabold text-blue-600">
-            ${course.price}
-          </span>
-          <span className="text-sm font-medium text-slate-400">
-            /{course.billingType}
-          </span>
-        </div>
-      </CardFooter>
     </Card>
   );
 }

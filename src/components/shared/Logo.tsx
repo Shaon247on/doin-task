@@ -3,7 +3,7 @@ import React from 'react'
 
 function Logo() {
   return (
-    <div  className='flex justify-center gap-2.5'>
+    <div  className='flex items-center gap-2.5'>
       <Image
       src={"/elements/logo.png"}
       alt='logo icon'
