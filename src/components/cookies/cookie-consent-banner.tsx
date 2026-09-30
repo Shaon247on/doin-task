@@ -48,9 +48,9 @@ export function CookieConsentBanner() {
   return (
     <aside
       aria-labelledby="cookie-consent-title"
-      className="fixed inset-x-0 bottom-0 z-[100] animate-in slide-in-from-bottom-8 border-t border-border bg-white shadow-[0_-12px_40px_rgba(15,23,42,0.16)] duration-500"
+      className="fixed right-3 top-20 z-100 max-h-[calc(100svh-6rem)] w-[min(28rem,calc(100vw-1.5rem))] animate-in slide-in-from-top-4 overflow-y-auto rounded-2xl border border-border bg-white shadow-[0_12px_40px_rgba(15,23,42,0.18)] duration-500 sm:right-5 md:top-24"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-5 px-4 py-5 sm:px-6 sm:py-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10 lg:px-8">
+      <div className="grid gap-4 p-4 sm:p-5">
         <div className="min-w-0">
           <h2 id="cookie-consent-title" className="text-base font-semibold text-foreground">
             Your privacy choices
@@ -66,7 +66,7 @@ export function CookieConsentBanner() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+        <div className="flex flex-wrap items-center gap-2">
           <Button type="button" variant="outline" size="sm" onClick={rejectOptional}>
             Reject
           </Button>
@@ -85,7 +85,7 @@ export function CookieConsentBanner() {
         </div>
 
         {customizing && (
-          <div className="space-y-4 lg:col-span-2">
+          <div className="space-y-4">
             <CookiePreferenceFields
               preferences={preferences}
               onChange={setPreferences}
