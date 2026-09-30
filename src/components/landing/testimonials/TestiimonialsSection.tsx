@@ -1,4 +1,5 @@
 import { TestimonialCard, type Testimonial } from "./testimonial-card";
+import { ScrollReveal } from "@/components/shared/scroll-reveal";
 
 // NOTE: avatar paths are placeholders, put the real photos in public/images/testimonials/
 const TESTIMONIALS: Testimonial[] = [
@@ -54,7 +55,7 @@ export function TestimonialsSection() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-x-20">
+        <ScrollReveal className="grid items-center gap-6 lg:grid-cols-2 lg:gap-x-20" distance={26}>
           <h2 className="max-w-lg font-poppins text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl xl:text-[44px]">
             Discover What Our Community Is Saying
           </h2>
@@ -65,20 +66,23 @@ export function TestimonialsSection() {
             our platform. Explore testimonials that reflect the diverse
             perspectives of enthusiastic learners and accomplished creators.
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-10 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-10  xl:gap-12">
           {TESTIMONIALS.map((t, i) => (
-            <TestimonialCard
+            <ScrollReveal
               key={t.name}
-              testimonial={t}
+              delay={i * 0.12}
+              distance={24}
               // On tablet the 3rd card is centered under the first two
               className={
                 i === 2
                   ? "md:col-span-2 md:mx-auto md:max-w-[calc(50%-12px)] lg:col-span-1 lg:max-w-none"
                   : ""
               }
-            />
+            >
+              <TestimonialCard testimonial={t} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
