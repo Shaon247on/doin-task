@@ -2,6 +2,10 @@ import { MOCK_CREATORS } from "@/mocks/creators.mock";
 import type { CreatorPageResult, CreatorSearchParams } from "@/types/creator.type";
 import { CREATOR_PAGE_SIZE } from "./constants";
 
+export async function getCreatorBySlug(slug: string) {
+  return MOCK_CREATORS.find((creator) => creator.slug === slug) ?? null;
+}
+
 export async function getCreators(params: CreatorSearchParams): Promise<CreatorPageResult> {
   const query = params.q.toLocaleLowerCase();
   let creators = MOCK_CREATORS.filter((creator) => {

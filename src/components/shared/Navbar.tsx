@@ -65,7 +65,7 @@ export function Navbar() {
       >
         <nav
           aria-label="Main"
-          className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:px-6 md:h-20 md:grid-cols-[1fr_auto_1fr] lg:px-8"
+          className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:px-6 md:h-20 lg:grid-cols-[1fr_auto_1fr] lg:px-8"
         >
           {/* Left: logo */}
           <div className="flex items-center justify-self-start">
@@ -73,7 +73,7 @@ export function Navbar() {
           </div>
 
           {/* Center: links (desktop) */}
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <Link
@@ -95,13 +95,13 @@ export function Navbar() {
           <div className="flex items-center gap-2 justify-self-end sm:gap-3">
             <Link
               href="/sign-in"
-              className="hidden rounded-full px-4 py-2 text-base transition-opacity hover:opacity-70 md:inline-block"
+              className="hidden rounded-full px-4 py-2 text-base transition-opacity hover:opacity-70 lg:inline-block"
             >
               Sign in
             </Link>
             <Link
               href="/sign-up"
-              className="hidden rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95 md:inline-block"
+              className="hidden rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95 lg:inline-block"
             >
               Join us
             </Link>
@@ -118,7 +118,7 @@ export function Navbar() {
               aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-drawer"
-              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10 md:hidden"
+              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10 lg:hidden"
             >
               <MenuIcon />
             </button>
@@ -137,7 +137,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-60 bg-black/50 md:hidden"
+              className="fixed inset-0 z-60 bg-black/50 lg:hidden"
               aria-hidden="true"
             />
             <motion.aside
@@ -150,7 +150,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 320 }}
-              className="fixed inset-y-0 right-0 z-70 flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl md:hidden"
+              className="fixed inset-y-0 right-0 z-70 flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl lg:hidden"
             >
               <div className="flex h-16 items-center justify-between px-4">
                 <Logo />

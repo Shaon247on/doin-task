@@ -7,6 +7,7 @@ export type Creator = {
   bio: string;
   specialties: string[];
   courseCount: number;
+  followerCount?: number;
   studentCount: number;
   rating: number;
   reviewCount: number;

@@ -1,5 +1,6 @@
 export interface Course {
   id: string;
+  creatorId?: string;
   slug: string;
   title: string;
   thumbnail: string;

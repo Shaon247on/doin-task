@@ -1,6 +1,6 @@
 import { Course } from "@/types/course.type";
 
-export const MOCK_COURSES: Course[] = [
+const COURSE_RECORDS: Omit<Course, "creatorId">[] = [
   {
     id: "1",
     slug: "learn-figma-from-basic",
@@ -926,6 +926,11 @@ export const MOCK_COURSES: Course[] = [
     billingType: "year",
   },
 ];
+
+export const MOCK_COURSES: Course[] = COURSE_RECORDS.map((course) => ({
+  ...course,
+  creatorId: "creator-1",
+}));
 
 export const FILTER_CATEGORIES = [
   "Featured",

@@ -33,12 +33,12 @@ export function CourseShell({ course, details, children }: CourseShellProps) {
 
   return (
     <div className="bg-background">
-      <section className="relative isolate min-h-screen max-h-screen w-full bg-hero">
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      <section className="relative isolate  md:min-h-screen max-h-screen w-full bg-hero">
+        <div className="pointer-events-none absolute h-screen inset-0 z-0 overflow-hidden">
           <HeroGrid />
         </div>
 
-        <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 px-4 pt-24 pb-8 sm:px-6 md:pt-28 lg:grid-cols-[minmax(0,1.8fr)_minmax(280px,0.95fr)] lg:gap-8 lg:px-8 lg:pb-10">
+        <div className="relative z-10 mx-auto grid md:min-h-screen max-w-7xl grid-cols-1 px-4 pt-32 pb-8 sm:px-6 md:pt-28 lg:grid-cols-[minmax(0,1.8fr)_minmax(280px,0.95fr)] lg:gap-8 lg:px-8 lg:pb-10">
           <div className="min-w-0 self-center pb-4 text-white">
             <ShareCourseButton title={details.headline} />
             <div className="flex items-start justify-between gap-3">
@@ -94,7 +94,7 @@ export function CourseShell({ course, details, children }: CourseShellProps) {
       </section>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-x-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.8fr)_minmax(280px,0.95fr)] lg:px-8">
-        <aside className="relative z-20 min-w-0 pt-6 lg:col-start-2 lg:row-start-1 lg:-mt-110 xl:-mt-120 lg:pt-0">
+        <aside className="relative z-20 min-w-0 pt-6 lg:col-start-2 lg:row-start-1 lg:-mt-110 xl:-mt-130 lg:pt-0">
           <div className="rounded-2xl border border-border bg-white p-5 shadow-sm sm:p-6 lg:sticky lg:top-24">
             <h2 className="text-base font-semibold">
               {details.lessonsCount} Lessons ({details.duration})

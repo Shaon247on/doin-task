@@ -16,7 +16,7 @@ export function CreatorCard({ creator }: { creator: Creator }) {
           width={72}
           height={72}
           sizes="72px"
-          className="size-16 shrink-0 rounded-full object-cover sm:size-[72px]"
+          className="size-16 shrink-0 rounded-full object-cover sm:size-18"
         />
         <div className="min-w-0 flex-1 pt-1">
           <h2 className="truncate text-lg font-semibold text-foreground sm:text-xl">
@@ -33,7 +33,7 @@ export function CreatorCard({ creator }: { creator: Creator }) {
         </div>
       </div>
 
-      <p className="mt-5 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-muted-foreground">
+      <p className="mt-5 line-clamp-3 min-h-18 text-sm leading-6 text-muted-foreground">
         {creator.bio}
       </p>
 

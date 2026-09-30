@@ -10,6 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ChartIcon } from "../icons/Icons";
+import { MOCK_CREATORS } from "@/mocks/creators.mock";
 
 export interface CourseData {
   id: string;
@@ -19,6 +20,7 @@ export interface CourseData {
   author: {
     name: string;
   };
+  creatorId?: string;
   lessonsCount: number;
   duration: string;
   commentsCount: number;
@@ -41,6 +43,9 @@ interface CourseCardProps {
 export function CourseCard({ course }: CourseCardProps) {
   const visibleStudents = course.enrolledStudents.slice(0, 4);
   const remainingCount = course.totalEnrolledCount - visibleStudents.length;
+  const creator = course.creatorId
+    ? MOCK_CREATORS.find((item) => item.id === course.creatorId)
+    : undefined;
 
   return (
     <Card className="group relative overflow-hidden rounded-[28px] border border-[#CED0D3] bg-white p-3 shadow-sm hover:shadow-md transition-all duration-300 w-full max-w-sm mx-auto flex flex-col justify-between">
@@ -91,9 +96,16 @@ export function CourseCard({ course }: CourseCardProps) {
           </div>
           <p className="text-sm font-medium text-slate-500">
             by{" "}
-            <span className="text-blue-600 hover:underline relative z-20">
-              {course.author.name}
-            </span>
+            {creator ? (
+              <Link
+                href={`/creators/${creator.slug}`}
+                className="relative z-20 text-blue-600 hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {course.author.name}
+              </Link>
+            ) : (
+              <span className="relative z-20 text-blue-600">{course.author.name}</span>
+            )}
           </p>
         </CardHeader>
 
