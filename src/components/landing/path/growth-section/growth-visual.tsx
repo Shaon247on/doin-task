@@ -43,13 +43,13 @@ export function GrowthVisual() {
         <CourseCard course={FEATURED_COURSE} />
       </div>
 
-      <div className="absolute -left-0 top-8 z-20 h-135 w-xl">
+      <div className="absolute left-0 top-8 z-20 h-135 w-xl">
         <Image
           src="/Images/boy.png"
           alt="Smiling student wearing headphones and holding a laptop"
           fill
           sizes="512px"
-          className="object-contain object-bottom drop-shadow-[0_30px_40px_rgba(0,0,0,0.15)]"
+          className="object-contain object-bottom drop-shadow-black/50 drop-shadow-2xl"
         />
       </div>
 

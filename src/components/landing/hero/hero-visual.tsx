@@ -98,12 +98,13 @@ export function HeroVisual() {
           alt="Smiling student wearing headphones and holding a laptop"
           fill
           priority
-        //   sizes="(min-width: 1024px) 540px, (min-width: 240px) 550px, 92vw"
+          //   sizes="(min-width: 1024px) 540px, (min-width: 240px) 550px, 92vw"
           className="
             select-none
             object-contain
             object-bottom
-
+            drop-shadow-black/70 
+            drop-shadow-2xl
             scale-[1.12]
 
             sm:scale-[1.3]
