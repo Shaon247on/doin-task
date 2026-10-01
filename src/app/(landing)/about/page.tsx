@@ -4,7 +4,11 @@ import { ArrowRight } from "lucide-react";
 
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 
-export const metadata: Metadata = { title: "About ByteSpace" };
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn how ByteSpace brings independent educators and curious learners together through practical online courses.",
+};
 
 const PRINCIPLES = [
   {

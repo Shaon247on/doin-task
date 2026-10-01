@@ -20,7 +20,12 @@ type CreatorPageProps = {
 export async function generateMetadata({ params }: CreatorPageProps): Promise<Metadata> {
   const { slug } = await params;
   const creator = await getCreatorBySlug(slug);
-  return { title: creator?.name ?? "Creator not found" };
+  return {
+    title: creator?.name ?? "Creator not found",
+    description: creator
+      ? `${creator.headline}. Explore ${creator.name}'s courses and teaching on ByteSpace.`
+      : "This ByteSpace creator could not be found.",
+  };
 }
 
 export default async function CreatorProfilePage({ params, searchParams }: CreatorPageProps) {

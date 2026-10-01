@@ -1,11 +1,12 @@
-import React from 'react'
+import type { Metadata } from "next";
 
-function page() {
+export const metadata: Metadata = {
+  title: "Search",
+  robots: { index: false, follow: true },
+};
+
+export default function SearchPage() {
   return (
-    <div>
-      
-    </div>
-  )
+    <div />
+  );
 }
-
-export default page

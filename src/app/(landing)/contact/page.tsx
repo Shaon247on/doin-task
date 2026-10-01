@@ -6,7 +6,11 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 import { MOCK_CREATORS } from "@/mocks/creators.mock";
 
-export const metadata: Metadata = { title: "Contact ByteSpace" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact ByteSpace about courses, creators, your account, privacy, or another question.",
+};
 
 const CONTACT_PATHS = [
   {

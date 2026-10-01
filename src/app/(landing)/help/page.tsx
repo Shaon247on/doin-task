@@ -4,7 +4,11 @@ import { ArrowRight, BookOpen, CircleHelp, Mail, UserRound } from "lucide-react"
 
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 
-export const metadata: Metadata = { title: "Help Center | ByteSpace" };
+export const metadata: Metadata = {
+  title: "Help Center",
+  description:
+    "Get answers about finding courses, managing your ByteSpace account, contacting creators, and privacy settings.",
+};
 
 const HELP_TOPICS = [
   {

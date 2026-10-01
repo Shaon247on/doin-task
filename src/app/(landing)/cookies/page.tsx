@@ -8,7 +8,11 @@ import {
   parseCookiePreferences,
 } from "@/lib/cookies/preferences";
 
-export const metadata: Metadata = { title: "Cookie Settings" };
+export const metadata: Metadata = {
+  title: "Cookie Settings",
+  description: "Review and update your optional ByteSpace cookie preferences.",
+  robots: { index: false, follow: true },
+};
 
 export default async function CookieSettingsPage() {
   const cookieStore = await cookies();

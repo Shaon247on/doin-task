@@ -7,7 +7,11 @@ import { UrlPagination } from "@/components/shared/url-pagination";
 import { getCreators } from "@/lib/creators/get-creators";
 import { parseCreatorSearchParams } from "@/lib/creators/search-params";
 
-export const metadata: Metadata = { title: "Creators" };
+export const metadata: Metadata = {
+  title: "Creators",
+  description:
+    "Meet independent educators and explore the courses they create on ByteSpace.",
+};
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

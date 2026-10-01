@@ -3,7 +3,11 @@ import Link from "next/link";
 
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 
-export const metadata: Metadata = { title: "Privacy Policy | ByteSpace" };
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read how ByteSpace handles personal information, cookies, data retention, and privacy requests.",
+};
 
 const SECTIONS = [
   {

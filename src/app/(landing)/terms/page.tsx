@@ -3,7 +3,11 @@ import Link from "next/link";
 
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 
-export const metadata: Metadata = { title: "Terms of Service | ByteSpace" };
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Review the terms for using ByteSpace, including accounts, course content, purchases, and acceptable use.",
+};
 
 const SECTIONS = [
   {
