@@ -7,49 +7,25 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import { MenuIcon, ShoppingBagIcon } from "@/components/icons/Icons";
+import { useCart } from "@/components/cart/cart-provider";
 import Logo from "./Logo";
+import { X } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
   { label: "Creators", href: "/creators" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 const SCROLL_THRESHOLD = 10;
 
-function CloseIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
 
-// function Logo() {
-//   // Replace the placeholder with your real logo (e.g. next/image or an SVG).
-//   return (
-//     <Link
-//       href="/"
-//       aria-label="Home"
-//       className="flex h-10 w-32 items-center justify-center rounded-md border border-dashed border-current/40 text-sm font-medium opacity-80"
-//     >
-//       Logo
-//     </Link>
-//   );
-// }
 
 export function Navbar() {
   const pathname = usePathname();
+  const { isOpen: cartOpen, itemCount, openCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -61,10 +37,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close drawer on route change
-  useEffect(() => {
+  const handleNavigation = () => {
     setOpen(false);
-  }, [pathname]);
+  };
 
   // Lock body scroll + close on Escape while the drawer is open
   useEffect(() => {
@@ -94,7 +69,7 @@ export function Navbar() {
       >
         <nav
           aria-label="Main"
-          className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:px-6 md:h-20 md:grid-cols-[1fr_auto_1fr] lg:px-8"
+          className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:px-6 md:h-20 lg:grid-cols-[1fr_auto_1fr] lg:px-8"
         >
           {/* Left: logo */}
           <div className="flex items-center justify-self-start">
@@ -102,7 +77,7 @@ export function Navbar() {
           </div>
 
           {/* Center: links (desktop) */}
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <Link
@@ -124,30 +99,38 @@ export function Navbar() {
           <div className="flex items-center gap-2 justify-self-end sm:gap-3">
             <Link
               href="/sign-in"
-              className="hidden rounded-full px-4 py-2 text-base transition-opacity hover:opacity-70 md:inline-block"
+              className="hidden rounded-full px-4 py-2 text-base transition-opacity hover:opacity-70 lg:inline-block"
             >
               Sign in
             </Link>
             <Link
-              href="/join"
-              className="hidden rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95 md:inline-block"
+              href="/sign-up"
+              className="hidden rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-transform hover:scale-[1.03] active:scale-95 lg:inline-block"
             >
               Join us
             </Link>
-            <Link
-              href="/cart"
-              aria-label="Cart"
-              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10"
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+              aria-expanded={cartOpen}
+              aria-controls="cart-drawer"
+              className="relative grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10"
             >
               <ShoppingBagIcon />
-            </Link>
+              {itemCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-5 text-primary-foreground">
+                  {itemCount}
+                </span>
+              )}
+            </button>
             <button
               type="button"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-drawer"
-              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10 md:hidden"
+              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10 lg:hidden"
             >
               <MenuIcon />
             </button>
@@ -166,7 +149,7 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/50 md:hidden"
+              className="fixed inset-0 z-60 bg-black/50 lg:hidden"
               aria-hidden="true"
             />
             <motion.aside
@@ -179,7 +162,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 320 }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl md:hidden"
+              className="fixed inset-y-0 right-0 z-70 flex w-[min(85vw,22rem)] flex-col bg-white text-foreground shadow-xl lg:hidden"
             >
               <div className="flex h-16 items-center justify-between px-4">
                 <Logo />
@@ -189,7 +172,7 @@ export function Navbar() {
                   aria-label="Close menu"
                   className="grid size-10 place-items-center rounded-full transition-colors hover:bg-muted"
                 >
-                  <CloseIcon />
+                  <X />
                 </button>
               </div>
 
@@ -198,6 +181,7 @@ export function Navbar() {
                   <li key={href}>
                     <Link
                       href={href}
+                      onClick={handleNavigation}
                       aria-current={isActive(href) ? "page" : undefined}
                       className={cn(
                         "block rounded-xl px-4 py-3 text-lg font-medium transition-colors hover:bg-muted",
@@ -213,12 +197,15 @@ export function Navbar() {
               <div className="mt-auto flex flex-col gap-3 border-t p-4">
                 <Link
                   href="/sign-in"
+                  onClick={handleNavigation}
                   className="rounded-full border px-5 py-3 text-center text-base font-medium transition-colors hover:bg-muted"
                 >
                   Sign in
                 </Link>
+
                 <Link
-                  href="/join"
+                  href="/sign-up"
+                  onClick={handleNavigation}
                   className="rounded-full bg-primary px-5 py-3 text-center text-base font-semibold text-primary-foreground"
                 >
                   Join us

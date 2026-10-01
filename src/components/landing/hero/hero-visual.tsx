@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { CourseStatCard } from "./course-stat-card";
 import { ProgressStatCard } from "./progress-stat-card";
 import { StudentsStatCard } from "./students-stat-card";
@@ -12,6 +12,8 @@ import { StudentsStatCard } from "./students-stat-card";
  * - Stat cards reposition at each breakpoint
  */
 export function HeroVisual() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <div
       className="
@@ -28,7 +30,7 @@ export function HeroVisual() {
       "
     >
       {/* Green ring */}
-      <div
+      <motion.div
         className="
           absolute bottom-0 left-1/2
           h-full
@@ -43,6 +45,13 @@ export function HeroVisual() {
           lg:w-full
           lg:translate-x-0
         "
+        initial={reduceMotion ? false : { opacity: 0, scale: 0.18, y: 38 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{
+          duration: reduceMotion ? 0 : 1.2,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        style={{ transformOrigin: "50% 100%" }}
       >
         <Image
           src="/elements/hero/ring-half-green.png"
@@ -56,10 +65,10 @@ export function HeroVisual() {
             object-bottom
           "
         />
-      </div>
+      </motion.div>
 
       {/* Boy */}
-      <div
+      <motion.div
         className="
           absolute
           bottom-6
@@ -80,9 +89,17 @@ export function HeroVisual() {
           lg:w-[52%]
           xl:w-[53%]
         "
+        initial={reduceMotion ? false : { opacity: 0, y: 26, scale: 0.92 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 190,
+          damping: 20,
+          delay: reduceMotion ? 0 : 1.25,
+        }}
       >
         <Image
-          src="/images/boy.png"
+          src="/Images/boy.png"
           alt="Smiling student wearing headphones and holding a laptop"
           fill
           priority
@@ -102,17 +119,17 @@ export function HeroVisual() {
             xl:scale-[1.18]
           "
         />
-      </div>
+      </motion.div>
 
       {/* Course card */}
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.85 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 30, scale: 0.82 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
           type: "spring",
           stiffness: 280,
           damping: 18,
-          delay: 0.1,
+          delay: reduceMotion ? 0 : 2.1,
         }}
         className="
         absolute
@@ -140,13 +157,13 @@ export function HeroVisual() {
 
       {/* Progress card */}
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.85 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 30, scale: 0.82 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
           type: "spring",
           stiffness: 280,
           damping: 18,
-          delay: 0.25,
+          delay: reduceMotion ? 0 : 2.26,
         }}
         className="
         absolute
@@ -176,13 +193,13 @@ export function HeroVisual() {
 
       {/* Students card */}
       <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.85 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 30, scale: 0.82 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
           type: "spring",
           stiffness: 280,
           damping: 18,
-          delay: 0.4,
+          delay: reduceMotion ? 0 : 2.42,
         }}
         className="
         absolute

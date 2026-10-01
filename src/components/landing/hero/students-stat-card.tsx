@@ -10,13 +10,13 @@ const AVATAR_COLORS = [
   "bg-violet-300",
 ];
 
-export function StudentsStatCard({ className = "" }: { className?: string }) {
+export function StudentsStatCard({ className = "", isgreen= false }: { className?: string; isgreen?: boolean}) {
   return (
-    <div className={`w-max rounded-xl bg-white p-3 text-foreground shadow-sm sm:p-4 ${className}`}>
+    <div className={`w-max rounded-xl p-3 ${isgreen ? "bg-primary":"bg-white"} text-card-foreground shadow-sm sm:p-4 ${className}`}>
       <p className="text-sm font-medium sm:text-base">Happy Students</p>
       <p className="mt-0.5 flex items-center gap-1 text-[10px] sm:text-xs">
         4.5 <span className="text-muted-foreground">(240)</span>
-        <StarIcon width={12} height={12} className="text-primary" />
+        <StarIcon width={16} height={16} className="text-primary" color="#003BE2" />
       </p>
       <div className="mt-2 flex items-center pl-2 sm:mt-3">
         {AVATAR_COLORS.map((color, i) => (

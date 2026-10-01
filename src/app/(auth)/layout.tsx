@@ -1,19 +1,13 @@
-
-import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import "../globals.css";
 
-export const metadata: Metadata = {
-  title: "Your site",
-  description: "Your description",
-};
+import { AuthShell } from "@/components/layout/AuthShell";
+import { Toaster } from "@/components/ui/sonner";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <section>
-      <div>
-        {children}
-      </div>
-    </section>
+    <>
+      <AuthShell>{children}</AuthShell>
+      <Toaster position="top-center" richColors />
+    </>
   );
 }

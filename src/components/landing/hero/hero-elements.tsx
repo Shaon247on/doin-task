@@ -1,4 +1,4 @@
-import { FloatingElement } from "./floating-element";
+import { FloatingElement } from "../../shared/floating-element";
 
 
 const ELEMENTS = [
