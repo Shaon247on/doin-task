@@ -8,7 +8,7 @@ export function ProgressStatCard({
   return (
     <div className={`w-36 rounded-xl bg-white p-3 text-foreground shadow-sm sm:w-56 sm:p-4 ${className}`}>
       <p className="text-xs sm:text-sm">Learning Progress</p>
-      <p className="mt-1 text-3xl font-semibold sm:mt-2 sm:text-5xl">{value}%</p>
+      <p className="mt-1 text-3xl font-semibold sm:mt-2 sm:text-5xl font-poppins">{value}%</p>
       <div
         role="progressbar"
         aria-valuenow={value}
