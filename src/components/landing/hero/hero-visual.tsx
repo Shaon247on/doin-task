@@ -33,13 +33,14 @@ export function HeroVisual() {
       <motion.div
         className="
           absolute bottom-0 left-1/2
-          h-full
-          w-[125%]
+          
+          h-[43.5vh]
+          w-full
           -translate-x-1/2
 
           sm:w-full
 
-          md:w-[105%]
+          md:w-full
 
           lg:left-0
           lg:w-full
@@ -71,13 +72,7 @@ export function HeroVisual() {
       <motion.div
         className="
           absolute
-          bottom-6
-          md:bottom-7
-          left-[56%]
-          sm:left-[56%]
-          md:left-[56%]
-          lg:left-[55%]
-          xl:left-[53%]
+          left-[50%]
           h-full
           w-[82%]
           -translate-x-1/2
@@ -132,6 +127,7 @@ export function HeroVisual() {
           delay: reduceMotion ? 0 : 2.1,
         }}
         className="
+        hidden sm:block
         absolute
         left-[2%]
         top-[40%]
@@ -146,10 +142,10 @@ export function HeroVisual() {
         md:top-[42%]
 
         lg:left-[17%]
-        lg:top-[22%]
+        lg:top-[12%]
 
         xl:left-[23%]
-        xl:top-[8%]
+        xl:top-[18%]
   "
       >
         <CourseStatCard />
@@ -181,11 +177,11 @@ export function HeroVisual() {
 
         lg:right-auto
         lg:left-[62%]
-        lg:top-[22%]
+        lg:top-[15%]
 
         xl:right-auto
         xl:left-[59%]
-        xl:top-[12%]
+        xl:top-[18%]
   "
       >
         <ProgressStatCard />
@@ -217,8 +213,8 @@ export function HeroVisual() {
         lg:left-[12%]
         lg:top-[60%]
 
-        xl:left-[18%]
-        xl:top-[56%]
+        xl:left-[18.5%]
+        xl:top-[59%]
     "
       >
         <StudentsStatCard />
