@@ -13,6 +13,14 @@ npm run dev
 
 Open the URL printed by Next.js, usually `http://localhost:3000`.
 
+For production metadata and the sitemap, set `SITE_URL` to the canonical origin of the deployed site:
+
+```env
+SITE_URL=https://your-production-domain.example
+```
+
+The sitemap includes public pages, creators, and courses with complete detail records. It excludes account, cookie-settings, and search utility pages.
+
 ```bash
 npm run build
 npm start

@@ -4,7 +4,11 @@ import { ArrowRight, BarChart3, Gift, Link2 } from "lucide-react";
 
 import { InnerPageHero } from "@/components/shared/inner-page-hero";
 
-export const metadata: Metadata = { title: "Affiliate Program | ByteSpace" };
+export const metadata: Metadata = {
+  title: "Affiliate Program",
+  description:
+    "Partner with ByteSpace to recommend practical courses to your audience and earn rewards for eligible referrals.",
+};
 
 const STEPS = [
   {

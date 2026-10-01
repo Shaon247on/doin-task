@@ -13,7 +13,12 @@ type CourseLayoutProps = {
 export async function generateMetadata({ params }: CourseLayoutProps): Promise<Metadata> {
   const { slug } = await params;
   const data = await getCourseDetailsBySlug(slug);
-  return { title: data?.details.headline ?? "Course not found" };
+  return {
+    title: data?.details.headline ?? "Course not found",
+    description: data
+      ? `Explore ${data.details.headline}, a ${data.course.level.toLowerCase()} course by ${data.course.author.name} on ByteSpace.`
+      : "This ByteSpace course could not be found.",
+  };
 }
 
 export default async function CourseLayout({ children, params }: CourseLayoutProps) {

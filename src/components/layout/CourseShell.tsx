@@ -16,6 +16,7 @@ import { CourseTabs } from "@/components/course/details/course-tabs";
 import { ShareCourseButton } from "@/components/course/details/share-course-button";
 import { HeroGrid } from "@/components/shared/hero-grid";
 import { Button } from "@/components/ui/button";
+import { MOCK_CREATORS } from "@/mocks/creators.mock";
 import { MOCK_COURSE_LESSONS } from "@/mocks/course-lessons.mock";
 import type { Course, CourseDetails } from "@/types/course.type";
 
@@ -26,6 +27,9 @@ type CourseShellProps = {
 };
 
 export function CourseShell({ course, details, children }: CourseShellProps) {
+  const creator = course.creatorId
+    ? MOCK_CREATORS.find((item) => item.id === course.creatorId)
+    : undefined;
   const firstLessons =
     MOCK_COURSE_LESSONS.find((item) => item.courseId === course.id)
       ?.modules.flatMap((module) => module.lessons)
@@ -188,7 +192,11 @@ export function CourseShell({ course, details, children }: CourseShellProps) {
                 {details.instructorBio}
               </p>
               <Link
-                href={course.author.url ?? "/creators"}
+                href={
+                  creator
+                    ? `/creators/${creator.slug}`
+                    : course.author.url ?? "/creators"
+                }
                 className="mt-4 inline-flex min-h-9 items-center rounded-full border border-border px-4 text-sm font-medium hover:bg-muted"
               >
                 See Full Profile

@@ -8,7 +8,11 @@ import { UrlPagination } from "@/components/shared/url-pagination";
 import { getCourses } from "@/lib/courses/get-courses";
 import { parseCourseSearchParams } from "@/lib/courses/search-params";
 
-export const metadata: Metadata = { title: "Courses" };
+export const metadata: Metadata = {
+  title: "Online Courses",
+  description:
+    "Explore practical online courses in design, development, business, marketing, and more on ByteSpace.",
+};
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
