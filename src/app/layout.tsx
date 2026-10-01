@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 
 import localFont from "next/font/local";
 import { CookieConsentBanner } from "@/components/cookies/cookie-consent-banner";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { CartProvider } from "@/components/cart/cart-provider";
 
 import "./globals.css";
 
@@ -39,7 +41,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${poppins.variable} ${satoshi.variable} ${clashDisplay.variable} font-satoshi h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         {/* <CookieConsentBanner /> */}
       </body>
     </html>

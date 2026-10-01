@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import { MenuIcon, ShoppingBagIcon } from "@/components/icons/Icons";
+import { useCart } from "@/components/cart/cart-provider";
 import Logo from "./Logo";
 import { X } from "lucide-react";
 
@@ -24,6 +25,7 @@ const SCROLL_THRESHOLD = 10;
 
 export function Navbar() {
   const pathname = usePathname();
+  const { isOpen: cartOpen, itemCount, openCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -107,13 +109,21 @@ export function Navbar() {
             >
               Join us
             </Link>
-            <Link
-              href="/cart"
-              aria-label="Cart"
-              className="grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10"
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+              aria-expanded={cartOpen}
+              aria-controls="cart-drawer"
+              className="relative grid size-10 place-items-center rounded-full transition-colors hover:bg-current/10"
             >
               <ShoppingBagIcon />
-            </Link>
+              {itemCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-5 text-primary-foreground">
+                  {itemCount}
+                </span>
+              )}
+            </button>
             <button
               type="button"
               onClick={() => setOpen(true)}

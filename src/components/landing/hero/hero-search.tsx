@@ -51,7 +51,7 @@ export function HeroSearch() {
           className="h-13 w-full rounded-full border-0 bg-white pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground md:text-base"
         />
       </div>
-      <Button type="submit">Search</Button>
+      <Button type="submit"  className="cursor-pointer">Search</Button>
     </form>
   );
 }

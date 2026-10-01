@@ -6,13 +6,10 @@ import { Title } from "@/components/shared/Title";
 import { MOCK_COURSES } from "@/mocks/coursCard.mocks";
 import { CourseCard } from "@/components/shared/CourseCard";
 import { CourseFilters } from "./course-filters";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-const ease: [number, number, number, number] = [
-  0.22,
-  1,
-  0.36,
-  1,
-];
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp: Variants = {
   hidden: {
@@ -99,12 +96,17 @@ export function CoursesSection() {
           }}
           className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
         >
-          {MOCK_COURSES.map((course) => (
+          {MOCK_COURSES.slice(0, 9).map((course) => (
             <motion.div key={course.id} variants={cardItem}>
               <CourseCard course={course} />
             </motion.div>
           ))}
         </motion.div>
+      </div>
+      <div className="text-center mt-6">
+        <Link href={"/courses"}>
+          <Button>Browse More</Button>
+        </Link>
       </div>
     </section>
   );
